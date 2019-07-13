@@ -1,0 +1,23 @@
+<h1>Héroes encontrados para la búsqueda: <small>{{ termino }}</small></h1>
+
+<ng-container *ngIf="heroes.length == 0; else elseTemplate">
+    <div class="alert alert-info">Ningún resultado para la búsqueda: <small>{{ termino }}</small> </div>
+</ng-container>
+<ng-template #elseTemplate>
+
+
+    <div class="card-columns">
+
+        <div class="card animated fadeIn fast" *ngFor="let heroe of heroes; let i = index">
+            <img class="card-img-top" [src]="heroe.img" [alt]="heroe.nombre">
+            <div class="card-body">
+                <h5 class="card-title">{{ heroe.nombre }}</h5>
+                <p class="card-text">{{ heroe.bio }}</p>
+                <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
+                <button (click)="verHeroe(heroe.nombre)" class="btn btn-block btn-outline-info">Info ...</button>
+                <!-- <a [routerLink]="['/heroes',heroe.nombre]" class="btn btn-outline-info">Ver mas link</a> -->
+            </div>
+        </div>
+
+    </div>
+</ng-template>
